@@ -3,7 +3,7 @@
 from setuptools import find_packages
 setup_params = dict(
 	name='jaraco.modb',
-	use_hg_version=True,
+	use_hg_version=dict(increment='0.1'),
 	packages=find_packages(),
 	namespace_packages=['jaraco'],
 	zip_safe=False,
