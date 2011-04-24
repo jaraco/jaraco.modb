@@ -23,3 +23,12 @@ def test_object():
 	assert isinstance(ob_res, TestObject)
 	assert ob_res is not ob
 	assert ob.val == ob_res.val
+
+def test_nested_object():
+	ob_nested = TestObject('child')
+	ob_parent = TestObject(ob_nested)
+	serialized = jaraco.modb.encode(ob_parent)
+	restored = jaraco.modb.decode(serialized)
+	assert isinstance(restored, TestObject)
+	assert isinstance(restored.val, TestObject)
+	assert restored.val.val == 'child'
