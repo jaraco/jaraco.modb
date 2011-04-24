@@ -26,6 +26,8 @@ def from_bson(json):
 	return json
 
 def init():
+	# remove all other backends so only this one is used
+	map(jsonpickle.remove_backend, jsonpickle.json._backend_names)
 	jsonpickle.load_backend(__name__, 'to_bson', 'from_bson', ValueError)
 	jsonpickle.set_preferred_backend(__name__)
 
