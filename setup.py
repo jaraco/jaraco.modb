@@ -3,6 +3,7 @@
 from setuptools import find_packages
 setup_params = dict(
 	name='jaraco.modb',
+	description="MongoDB Object DataBase (MODB) for Python objects",
 	use_hg_version=dict(increment='0.1'),
 	packages=find_packages(),
 	namespace_packages=['jaraco'],
