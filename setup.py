@@ -10,6 +10,7 @@ setup_params = dict(
 	zip_safe=False,
 	install_requires=[
 		'jsonpickle',
+		'pymongo',
 	],
 	setup_requires=[
 		'hgtools',
