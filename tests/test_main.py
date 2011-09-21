@@ -42,6 +42,6 @@ class MyDict(dict):
 def test_encode_dict_subclass():
 	d = MyDict(a=3, b=4)
 	encoded = jaraco.modb.encode(d)
-	assert 'MyDict' in encoded
+	assert 'MyDict' in str(encoded)
 	decoded = jaraco.modb.decode(encoded)
 	assert isinstance(decoded, MyDict)
