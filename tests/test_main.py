@@ -32,3 +32,13 @@ def test_nested_object():
 	assert isinstance(restored, TestObject)
 	assert isinstance(restored.val, TestObject)
 	assert restored.val.val == 'child'
+
+class MyDict(dict):
+	pass
+
+def test_encode_dict_subclass():
+	d = MyDict(a=3, b=4)
+	encoded = jaraco.modb.encode(d)
+	assert 'MyDict' in encoded
+	decoded = jaraco.modb.decode(encoded)
+	assert isinstance(decoded, MyDict)
