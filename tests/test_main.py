@@ -1,6 +1,9 @@
 import pymongo.binary
 import jaraco.modb
 
+def setup_module(module):
+	jaraco.modb.init()
+
 def test_to_bson():
 	sample = dict(
 		a = u'a string',
