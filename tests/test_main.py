@@ -45,3 +45,7 @@ def test_encode_dict_subclass():
 	assert 'MyDict' in str(encoded)
 	decoded = jaraco.modb.decode(encoded)
 	assert isinstance(decoded, MyDict)
+
+def test_init():
+	"If init works correctly, jaraco.modb will be the only backend."
+	assert jaraco.modb.jsonpickle.json._backend_names == ['jaraco.modb']
