@@ -1,4 +1,5 @@
-import jsonpickle
+import jsonpickle.pickler
+import jsonpickle.unpickler
 import pymongo.binary
 import jaraco.util.dictlib
 from jaraco.util.string import is_binary
@@ -26,11 +27,11 @@ def from_bson(json):
 	return json
 
 def init():
-	# remove all other backends so only this one is used
-	orig_backends = list(jsonpickle.json._backend_names)
-	map(jsonpickle.remove_backend, orig_backends)
-	jsonpickle.load_backend(__name__, 'to_bson', 'from_bson', ValueError)
-	jsonpickle.set_preferred_backend(__name__)
+	warnings.warn("It is no longer necessary to call jaraco.modb.init",
+		DeprecationWarning)
 
-encode = jsonpickle.encode
-decode = jsonpickle.decode
+def encode(value):
+	return to_bson(jsonpickle.pickler.Pickler().flatten(value))
+
+def decode(value):
+	return jsonpickle.unpickler.Unpickler().restore(from_bson(value))

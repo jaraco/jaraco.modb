@@ -1,9 +1,6 @@
 import pymongo.binary
 import jaraco.modb
 
-def setup_module(module):
-	jaraco.modb.init()
-
 def test_to_bson():
 	sample = dict(
 		a = u'a string',
@@ -45,7 +42,3 @@ def test_encode_dict_subclass():
 	assert 'MyDict' in str(encoded)
 	decoded = jaraco.modb.decode(encoded)
 	assert isinstance(decoded, MyDict)
-
-def test_init():
-	"If init works correctly, jaraco.modb will be the only backend."
-	assert jaraco.modb.jsonpickle.json._backend_names == ['jaraco.modb']
