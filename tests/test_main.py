@@ -42,3 +42,7 @@ def test_encode_dict_subclass():
 	assert 'MyDict' in str(encoded)
 	decoded = jaraco.modb.decode(encoded)
 	assert isinstance(decoded, MyDict)
+
+def test_init():
+	"Init should do nothing, not cause errors"
+	jaraco.modb.init()

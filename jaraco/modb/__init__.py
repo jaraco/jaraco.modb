@@ -1,3 +1,5 @@
+import warnings
+
 import jsonpickle.pickler
 import jsonpickle.unpickler
 import pymongo.binary
