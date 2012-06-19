@@ -2,7 +2,7 @@ import warnings
 
 import jsonpickle.pickler
 import jsonpickle.unpickler
-import pymongo.binary
+import bson.binary
 import jaraco.util.dictlib
 from jaraco.util.string import is_binary
 
@@ -15,7 +15,7 @@ def to_bson(json):
 	if isinstance(json, list):
 		return map(to_bson, json)
 	if is_binary(json):
-		return pymongo.binary.Binary(json)
+		return bson.binary.Binary(json)
 	return json
 
 def from_bson(json):
@@ -24,7 +24,7 @@ def from_bson(json):
 		return jaraco.util.dictlib.dict_map(from_bson, json)
 	if isinstance(json, list):
 		return map(from_bson, json)
-	if isinstance(json, pymongo.binary.Binary):
+	if isinstance(json, bson.binary.Binary):
 		return bytes(json)
 	return json
 

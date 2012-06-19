@@ -1,4 +1,4 @@
-import pymongo.binary
+import bson.binary
 import jaraco.modb
 
 def test_to_bson():
@@ -10,7 +10,7 @@ def test_to_bson():
 	res = jaraco.modb.to_bson(sample)
 	assert res['a'] == sample['a']
 	assert res['b'] == sample['b']
-	assert isinstance(res['c'], pymongo.binary.Binary)
+	assert isinstance(res['c'], bson.binary.Binary)
 
 class TestObject(object):
 	def __init__(self, val):
