@@ -15,6 +15,13 @@ setup_params = dict(
 	packages=find_packages(),
 	namespace_packages=['jaraco'],
 	zip_safe=False,
+	classifiers = [
+		"Development Status :: 5 - Production/Stable",
+		"Intended Audience :: Developers",
+		"Programming Language :: Python :: 2.6",
+		"Programming Language :: Python :: 2.7",
+		"Programming Language :: Python :: 3",
+	],
 	install_requires=[
 		'jsonpickle==0.4.0',
 		'pymongo',
