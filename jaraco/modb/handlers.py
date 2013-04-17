@@ -5,7 +5,6 @@ def register(class_):
         jsonpickle.handlers.registry.register(handled_type, class_)
     return class_
 
-@register
 class SimpleReduceHandler(jsonpickle.handlers.BaseHandler):
     """
     Follow the __reduce__ protocol to pickle an object. As long as the factory
