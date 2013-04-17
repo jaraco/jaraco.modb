@@ -22,6 +22,7 @@ setup_params = dict(
 	],
 	setup_requires=[
 		'hgtools',
+		'pytest-runner',
 	],
 )
 if __name__ == '__main__':
