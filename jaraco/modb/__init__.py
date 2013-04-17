@@ -6,6 +6,10 @@ import bson.binary
 import jaraco.util.dictlib
 from jaraco.util.string import is_binary
 
+# load the specialized handlers
+__import__('jaraco.modb.datetime')
+__import__('jaraco.modb.odict')
+
 # set up a couple of "serialization" functions for jsonpickle to produce
 #  and consume BSON-ready dicts, rather than serializing to strings.
 def to_bson(json):
