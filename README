@@ -59,6 +59,11 @@ Changes
 * Added proper support for datetime objects.
 * Added support for OrderedDictionaries.
 
+1.0.4
+~~~~~
+
+* Removed requirement to call `jaraco.modb.init()` to initialize.
+
 1.0
 ~~~
 
