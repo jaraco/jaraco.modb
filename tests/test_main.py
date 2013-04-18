@@ -9,10 +9,11 @@ def test_to_bson():
 		b = 'another string',
 		c = 'some binary bytes\x00\xff',
 	)
-	res = jaraco.modb.to_bson(sample)
+	res = jaraco.modb.encode(sample)
 	assert res['a'] == sample['a']
 	assert res['b'] == sample['b']
 	assert isinstance(res['c'], bson.binary.Binary)
+	assert jaraco.modb.decode(res) == sample
 
 class TestObject(object):
 	def __init__(self, val):

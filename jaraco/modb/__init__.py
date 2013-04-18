@@ -3,41 +3,33 @@ import warnings
 import jsonpickle.pickler
 import jsonpickle.unpickler
 import bson.binary
-import jaraco.util.dictlib
 from jaraco.util.string import is_binary
 
 # load the specialized handlers
 __import__('jaraco.modb.datetime')
 __import__('jaraco.modb.odict')
 
-# set up a couple of "serialization" functions for jsonpickle to produce
-#  and consume BSON-ready dicts, rather than serializing to strings.
-def to_bson(json):
-	# all this just so we can convert 'bytes' objects to pymongo Binary
-	if isinstance(json, dict):
-		return jaraco.util.dictlib.dict_map(to_bson, json)
-	if isinstance(json, list):
-		return map(to_bson, json)
-	if is_binary(json):
-		return bson.binary.Binary(json)
-	return json
+# override the default pickler/unpickler to handle binary strings
+class Pickler(jsonpickle.pickler.Pickler):
+	def flatten(self, obj):
+		flattened = super(Pickler, self).flatten(obj)
+		if is_binary(flattened):
+			return bson.binary.Binary(flattened)
+		return flattened
 
-def from_bson(json):
-	# all this just so we can convert pymongo Binary back to 'bytes'
-	if isinstance(json, dict):
-		return jaraco.util.dictlib.dict_map(from_bson, json)
-	if isinstance(json, list):
-		return map(from_bson, json)
-	if isinstance(json, bson.binary.Binary):
-		return bytes(json)
-	return json
+class Unpickler(jsonpickle.unpickler.Unpickler):
+	def restore(self, obj):
+		restored = super(Unpickler, self).restore(obj)
+		if isinstance(restored, bson.binary.Binary):
+			return bytes(restored)
+		return restored
 
 def init():
 	warnings.warn("It is no longer necessary to call jaraco.modb.init",
 		DeprecationWarning)
 
 def encode(value):
-	return to_bson(jsonpickle.pickler.Pickler().flatten(value))
+	return Pickler().flatten(value)
 
 def decode(value):
-	return jsonpickle.unpickler.Unpickler().restore(from_bson(value))
+	return Unpickler().restore(value)
