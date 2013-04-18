@@ -30,10 +30,6 @@ class Unpickler(jsonpickle.unpickler.Unpickler):
 			return bytes(restored)
 		return restored
 
-def init():
-	warnings.warn("It is no longer necessary to call jaraco.modb.init",
-		DeprecationWarning)
-
 def encode(value):
 	return Pickler().flatten(value)
 

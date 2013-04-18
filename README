@@ -46,6 +46,12 @@ BSON-friendly representations::
 Changes
 -------
 
+2.0
+~~~
+
+* Removed initializer function (`jaraco.modb.init()`). Clients should remove
+  that call (if present) before upgrading to 2.0.
+
 1.2
 ~~~
 
