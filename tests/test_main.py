@@ -51,10 +51,6 @@ def test_encode_dict_subclass():
 	decoded = jaraco.modb.decode(encoded)
 	assert isinstance(decoded, MyDict)
 
-def test_init():
-	"Init should do nothing, not cause errors"
-	jaraco.modb.init()
-
 def test_ordered_dict():
 	try:
 		import collections
