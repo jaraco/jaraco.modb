@@ -25,19 +25,14 @@ Usage
 representations of pickleable Python objects for easy storage in a MongoDB
 database.
 
-The jsonpickle module requires initialization to use the backends supplied
-by jaraco.modb, so the application must first call `init()`::
-
-    import jaraco.modb
-    jaraco.modb.init()
-
-Thereafter, one can simply encode and decode Python objects to MongoDB
+One may simply encode and decode Python objects to MongoDB
 BSON-friendly representations::
 
     class MyObject(object):
         def __init__(self, val):
             self.val = val
 
+    import jaraco.modb
     import pymongo
     mongo_collection = pymongo.Connection().mydb.mycollection
     val = MyObject(3)
@@ -50,6 +45,13 @@ BSON-friendly representations::
 
 Changes
 -------
+
+1.2
+~~~
+
+* Now store naive and UTC datetimes naturally in MongoDB.
+* The encoder/decoder now subclasses the `jsonpickle` classes to more
+  efficiently handle binary strings.
 
 1.1
 ~~~
