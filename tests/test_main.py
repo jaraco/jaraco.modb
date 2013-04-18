@@ -1,4 +1,9 @@
+from __future__ import absolute_import
+
+import datetime
+
 import bson.binary
+import bson.tz_util
 import py.test
 
 import jaraco.modb
@@ -61,3 +66,24 @@ def test_ordered_dict():
 	assert isinstance(restored, collections.OrderedDict)
 	assert restored.keys() == list('acb')
 	assert restored.values() == [1, 3, 4]
+
+def test_datetime_naive():
+	now = datetime.datetime.utcnow()
+	serialized = jaraco.modb.encode(now)
+	assert isinstance(serialized, datetime.datetime)
+	restored = jaraco.modb.decode(serialized)
+	assert restored == now
+
+def test_datetime_utc():
+	now = datetime.datetime.utcnow().replace(tzinfo=bson.tz_util.utc)
+	serialized = jaraco.modb.encode(now)
+	assert isinstance(serialized, datetime.datetime)
+	restored = jaraco.modb.decode(serialized)
+	assert restored == now
+
+def test_datetime_local():
+	now = datetime.datetime.now().replace(tzinfo=bson.tz_util.FixedOffset(-60*5, 'EST'))
+	serialized = jaraco.modb.encode(now)
+	assert not isinstance(serialized, datetime.datetime)
+	restored = jaraco.modb.decode(serialized)
+	assert restored == now

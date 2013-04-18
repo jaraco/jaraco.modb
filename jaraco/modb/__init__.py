@@ -1,4 +1,7 @@
+from __future__ import absolute_import
+
 import warnings
+import datetime as dt
 
 import jsonpickle.pickler
 import jsonpickle.unpickler
@@ -12,6 +15,9 @@ __import__('jaraco.modb.odict')
 # override the default pickler/unpickler to handle binary strings
 class Pickler(jsonpickle.pickler.Pickler):
 	def flatten(self, obj):
+		if isinstance(obj, dt.datetime) and not obj.utcoffset():
+			# naive datetimes or UTC datetimes can be stored directly
+			return obj
 		flattened = super(Pickler, self).flatten(obj)
 		if is_binary(flattened):
 			return bson.binary.Binary(flattened)
