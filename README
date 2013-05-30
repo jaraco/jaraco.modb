@@ -63,6 +63,12 @@ method returns a function that jsonpickle cannot serialize.
 Changes
 -------
 
+2.1.1
+~~~~~
+
+* Workaround for `IndexError in jsonpickle
+  <https://github.com/jsonpickle/jsonpickle/issues/37>`_.
+
 2.1
 ~~~
 
