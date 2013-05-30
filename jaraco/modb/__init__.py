@@ -1,6 +1,5 @@
 from __future__ import absolute_import
 
-import warnings
 import datetime as dt
 
 import jsonpickle.pickler
