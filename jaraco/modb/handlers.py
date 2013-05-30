@@ -22,7 +22,9 @@ class SimpleReduceHandler(jsonpickle.handlers.BaseHandler):
     def restore(self, obj):
         unpickler = self._base
         cls, args = map(unpickler.restore, obj['__reduce__'])
-        return cls(*args)
+        instance = cls(*args)
+        unpickler._mkref(instance)
+        return instance
 
     @classmethod
     def handles(cls, target):

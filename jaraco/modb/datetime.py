@@ -35,7 +35,9 @@ class DatetimeHandler(jsonpickle.handlers.BaseHandler):
         cls = unpickler.restore(cls)
         params = map(unpickler.restore, args[1:])
         params = (value,) + tuple(params)
-        return cls.__new__(cls, *params)
+        instance = cls.__new__(cls, *params)
+        unpickler._mkref(instance)
+        return instance
 
 @handlers.register
 class TimeDeltaHandler(handlers.SimpleReduceHandler):
