@@ -32,3 +32,11 @@ class MyUnicode(unicode):
 
 def test_UnicodeSubclass():
 	roundtrip(MyUnicode('foo'))
+
+def test_custom_handler_references():
+	"""
+	https://github.com/jsonpickle/jsonpickle/issues/37
+	"""
+	ob = MyUnicode('test me')
+	subject = dict(a=ob, b=ob, c=ob)
+	roundtrip(subject)
