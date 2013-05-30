@@ -43,8 +43,31 @@ BSON-friendly representations::
     assert isinstance(new_val, MyObject)
     assert new_val.val == 3
 
+Features
+--------
+
+Reduce Support
+~~~~~~~~~~~~~~
+
+``jsonpickle`` 0.4 doesn't support the reduce protocol out of the box.
+``jaraco.modb`` provides a handy way to do this with the SimpleReduceHandler::
+
+    @jaraco.modb.handlers.SimpleReduceHandler.handles
+    class MyUnicode(unicode):
+        def __reduce__(self):
+            return MyUnicode, (unicode(self),)
+
+Note that you must provide the __reduce__ method as the built-in reduce
+method returns a function that jsonpickle cannot serialize.
+
 Changes
 -------
+
+2.1
+~~~
+
+* Added convenience method for decorating functions with the
+  ``SimpleReduceHandler``.
 
 2.0
 ~~~
