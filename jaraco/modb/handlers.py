@@ -1,9 +1,10 @@
 import jsonpickle.handlers
 
-def register(class_):
-    for handled_type in getattr(class_, '_handles', []):
-        jsonpickle.handlers.registry.register(handled_type, class_)
-    return class_
+def register(handler_class, *handled_types):
+    handled_types = handled_types or getattr(handler_class, '_handles', [])
+    for handled_type in handled_types:
+        jsonpickle.handlers.registry.register(handled_type, handler_class)
+    return handler_class
 
 class SimpleReduceHandler(jsonpickle.handlers.BaseHandler):
     """
@@ -22,3 +23,11 @@ class SimpleReduceHandler(jsonpickle.handlers.BaseHandler):
         unpickler = self._base
         cls, args = map(unpickler.restore, obj['__reduce__'])
         return cls(*args)
+
+    @classmethod
+    def handles(cls, target):
+        """
+        Decorator for any class with a suitable __reduce__ method.
+        """
+        register(cls, target)
+        return target
