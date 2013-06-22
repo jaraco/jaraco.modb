@@ -23,7 +23,7 @@ setup_params = dict(
 		"Programming Language :: Python :: 3",
 	],
 	install_requires=[
-		'jsonpickle==0.4.0',
+		'jsonpickle>=0.5.0-rc1',
 		'pymongo',
 		'jaraco.util',
 	],

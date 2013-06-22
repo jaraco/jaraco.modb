@@ -6,8 +6,6 @@ import decimal
 
 import jsonpickle
 
-import jaraco.modb.handlers
-
 def setup_module():
 	importlib.import_module('jaraco.modb')
 
@@ -25,7 +23,8 @@ def test_Decimal():
 	roundtrip(decimal.Decimal(1.0))
 	roundtrip(decimal.Decimal(1000))
 
-@jaraco.modb.handlers.SimpleReduceHandler.handles
+# This technique demonstrates how to handle a Unicode subclass
+@jsonpickle._handlers.SimpleReduceHandler.handles
 class MyUnicode(unicode):
 	def __reduce__(self):
 		return MyUnicode, (unicode(self),)

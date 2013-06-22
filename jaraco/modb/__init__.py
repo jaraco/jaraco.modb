@@ -7,10 +7,6 @@ import jsonpickle.unpickler
 import bson.binary
 from jaraco.util.string import is_binary
 
-# load the specialized handlers
-__import__('jaraco.modb.datetime')
-__import__('jaraco.modb.odict')
-
 # override the default pickler/unpickler to handle binary strings
 class Pickler(jsonpickle.pickler.Pickler):
 	def flatten(self, obj):
