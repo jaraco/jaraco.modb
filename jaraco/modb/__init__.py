@@ -6,6 +6,7 @@ import jsonpickle.pickler
 import jsonpickle.unpickler
 import bson.binary
 from jaraco.util.string import is_binary
+
 # override the default pickler/unpickler to handle binary strings
 class Pickler(jsonpickle.pickler.Pickler):
 	def flatten(self, obj, reset=True):
@@ -16,6 +17,7 @@ class Pickler(jsonpickle.pickler.Pickler):
 		if is_binary(flattened):
 			return bson.binary.Binary(flattened)
 		return flattened
+
 class Unpickler(jsonpickle.unpickler.Unpickler):
 	def restore(self, obj, reset=True):
 		restored = super(Unpickler, self).restore(obj, reset)
