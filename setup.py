@@ -26,6 +26,7 @@ setup_params = dict(
 		'jsonpickle>=0.6',
 		'pymongo',
 		'jaraco.util',
+		'six',
 	],
 	setup_requires=[
 		'hgtools',
