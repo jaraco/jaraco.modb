@@ -1,6 +1,7 @@
 from __future__ import absolute_import
 
 import datetime
+import collections
 
 import six
 import bson.binary
@@ -54,12 +55,8 @@ def test_encode_dict_subclass():
 	assert isinstance(decoded, MyDict)
 
 def test_ordered_dict():
-	try:
-		import collections
-		items = ('a', 1), ('c', 3), ('b', 4)
-		ob = collections.OrderedDict(items)
-	except Exception:
-		py.test.skip("OrderedDict not available")
+	items = ('a', 1), ('c', 3), ('b', 4)
+	ob = collections.OrderedDict(items)
 	serialized = jaraco.modb.encode(ob)
 	restored = jaraco.modb.decode(serialized)
 	assert isinstance(restored, collections.OrderedDict)
