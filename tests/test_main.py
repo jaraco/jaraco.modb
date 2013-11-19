@@ -56,7 +56,8 @@ def test_encode_dict_subclass():
 def test_ordered_dict():
 	try:
 		import collections
-		ob = collections.OrderedDict(a=1, c=3, b=4)
+		items = ('a', 1), ('c', 3), ('b', 4)
+		ob = collections.OrderedDict(items)
 	except Exception:
 		py.test.skip("OrderedDict not available")
 	serialized = jaraco.modb.encode(ob)
