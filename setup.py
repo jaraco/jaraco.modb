@@ -21,8 +21,11 @@ setup_params = dict(
 		"Programming Language :: Python :: 2.7",
 		"Programming Language :: Python :: 3",
 	],
+	find_links=[
+		'https://dl.dropboxusercontent.com/u/54081/cheeseshop/index.html',
+	],
 	install_requires=[
-		'jsonpickle>=0.6',
+		'jsonpickle>=0.6.1p-20131118',
 		'pymongo',
 		'jaraco.util',
 		'six',
