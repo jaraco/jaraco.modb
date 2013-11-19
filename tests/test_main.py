@@ -62,8 +62,8 @@ def test_ordered_dict():
 	serialized = jaraco.modb.encode(ob)
 	restored = jaraco.modb.decode(serialized)
 	assert isinstance(restored, collections.OrderedDict)
-	assert restored.keys() == list('acb')
-	assert restored.values() == [1, 3, 4]
+	assert list(restored.keys()) == list('acb')
+	assert list(restored.values()) == [1, 3, 4]
 
 def test_datetime_naive():
 	now = datetime.datetime.utcnow()
