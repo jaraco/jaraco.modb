@@ -18,8 +18,8 @@ You can install it with ``easy_install jaraco.modb`` or grab the source
 code from the `mercurial repository
 <http://bitbucket.org/jaraco/jaraco.modb>`_.
 
-Usage
------
+Manual Usage
+------------
 
 ``jaraco.modb`` facilitates using `jsonpickle` to produce MongoDB-friendly
 representations of pickleable Python objects for easy storage in a MongoDB
@@ -43,9 +43,27 @@ BSON-friendly representations::
     assert isinstance(new_val, MyObject)
     assert new_val.val == 3
 
+Automatic Usage
+---------------
+
+``jaraco.modb`` also provides an SON Manipulator suitable for automatically
+encoding arbitrary objects for a pymongo.Database::
+
+    jaraco.modb.SONManipulator.install(mongo_collection.database)
+    mongo_collection.save({'val': val})
+
+Unfortunately, due to a limitation with the API of the SONManipulator,
+it's not possible to save a custom object as the document.
+
 
 Changes
 -------
+
+3.1
+~~~
+
+* Add an SONManipulator according to the `MongoDB example
+  <http://api.mongodb.org/python/current/examples/custom_type.html>`_.
 
 3.0
 ~~~
