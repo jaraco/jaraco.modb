@@ -6,6 +6,7 @@ import six
 import jsonpickle.pickler
 import jsonpickle.unpickler
 import bson.binary
+import pymongo.son_manipulator
 from jaraco.util.string import is_binary
 
 # override the default pickler/unpickler to better handle some types
@@ -36,6 +37,24 @@ class Unpickler(jsonpickle.unpickler.Unpickler):
 		if isinstance(restored, bson.binary.Binary):
 			return bytes(restored)
 		return restored
+
+class SONManipulator(pymongo.son_manipulator.SONManipulator):
+	"""
+	PyMongo provides a hook for custom types. Invoke SONManipulator.install
+	on the target database to enable.
+	"""
+	pickler = Pickler()
+	unpickler = Unpickler()
+
+	@classmethod
+	def install(cls, db):
+		db.add_son_manipulator(cls())
+
+	def transform_incoming(self, son, collection):
+		return self.pickler.flatten(son)
+
+	def transform_outgoing(self, son, collection):
+		return self.unpickler.restore(son)
 
 def encode(value):
 	return Pickler().flatten(value)
