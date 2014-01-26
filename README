@@ -43,6 +43,10 @@ BSON-friendly representations::
     assert isinstance(new_val, MyObject)
     assert new_val.val == 3
 
+A more detailed tutorial is now `published as an iPython Notebook
+<http://nbviewer.ipython.org/urls/bitbucket.org/jaraco/jaraco.modb/raw/tip/tutorial.ipynb?create=1>`_.
+
+
 Automatic Usage
 ---------------
 
@@ -53,4 +57,5 @@ encoding arbitrary objects for a pymongo.Database::
     mongo_collection.save({'val': val})
 
 Unfortunately, due to a limitation with the API of the SONManipulator,
-it's not possible to save a custom object as the document.
+it's not possible to save a custom object as the document itself (the
+document must always be a dict).
