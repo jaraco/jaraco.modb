@@ -6,7 +6,6 @@ import collections
 import six
 import bson.binary
 import bson.tz_util
-import py.test
 
 import jaraco.modb
 
