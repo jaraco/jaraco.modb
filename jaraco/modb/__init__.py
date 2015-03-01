@@ -7,7 +7,7 @@ import jsonpickle.pickler
 import jsonpickle.unpickler
 import bson.binary
 import pymongo.son_manipulator
-from jaraco.util.string import is_binary
+from jaraco.text import is_binary
 
 # override the default pickler/unpickler to better handle some types
 

@@ -32,7 +32,7 @@ setup_params = dict(
 	install_requires=[
 		'jsonpickle>=0.6.1p-20131118',
 		'pymongo',
-		'jaraco.util',
+		'jaraco.text',
 		'six',
 	],
 	setup_requires=[
