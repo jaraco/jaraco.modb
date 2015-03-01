@@ -25,13 +25,10 @@ setup_params = dict(
 	url="https://bitbucket.org/jaraco/jaraco.modb",
 	packages=setuptools.find_packages(),
 	install_requires=[
-		'jsonpickle>=0.6.1p-20131118',
+		'jsonpickle>=0.6.2',
 		'pymongo',
 		'jaraco.text',
 		'six',
-	],
-	find_links=[
-		'https://dl.dropboxusercontent.com/u/54081/cheeseshop/index.html',
 	],
 	setup_requires=[
 		'setuptools_scm',

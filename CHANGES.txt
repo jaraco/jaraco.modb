@@ -1,6 +1,11 @@
 Changes
 -------
 
+3.3
+~~~
+
+* Bump jsonpickle requirement to 0.6.2 final (or later).
+
 3.2
 ~~~
 
