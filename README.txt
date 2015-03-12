@@ -1,2 +1,4 @@
-`Documentation <https://pythonhosted.org/jaraco.modb>`_jaraco.modb
+jaraco.modb
 ===========
+
+`Documentation <https://pythonhosted.org/jaraco.modb>`_
