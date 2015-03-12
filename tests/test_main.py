@@ -77,7 +77,8 @@ def test_datetime_utc():
 	assert restored == now
 
 def test_datetime_local():
-	now = datetime.datetime.now().replace(tzinfo=bson.tz_util.FixedOffset(-60*5, 'EST'))
+	est = bson.tz_util.FixedOffset(-60*5, 'EST')
+	now = datetime.datetime.now().replace(tzinfo=est)
 	serialized = jaraco.modb.encode(now)
 	assert not isinstance(serialized, datetime.datetime)
 	restored = jaraco.modb.decode(serialized)
