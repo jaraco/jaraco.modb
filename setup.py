@@ -25,7 +25,7 @@ setup_params = dict(
 	url="https://bitbucket.org/jaraco/jaraco.modb",
 	packages=setuptools.find_packages(),
 	install_requires=[
-		'jsonpickle>=0.6.2',
+		'jsonpickle==0.7.2',
 		'pymongo',
 		'jaraco.text',
 		'six',
