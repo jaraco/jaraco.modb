@@ -7,7 +7,7 @@ from setuptools import find_packages
 
 here = functools.partial(os.path.join, os.path.dirname(__file__))
 
-with open(here('README')) as readme:
+with open(here('README.txt')) as readme:
 	long_description = readme.read()
 with open(here('CHANGES.txt')) as changes:
 	long_description += '\n' + changes.read()
