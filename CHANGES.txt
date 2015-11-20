@@ -1,6 +1,16 @@
 Changes
 -------
 
+3.4
+~~~
+
+* Bump jsonpickle to 0.9.2.
+
+3.3.1
+~~~~
+
+* Pin to jsonpickle 0.7.2, as 0.8 and 0.9.1 cause tests to fail.
+
 3.3
 ~~~
 
