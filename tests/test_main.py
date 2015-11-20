@@ -22,25 +22,25 @@ def test_to_bson():
 		assert isinstance(res['c'], bson.binary.Binary)
 	assert jaraco.modb.decode(res) == sample
 
-class TestObject(object):
+class ObjectUnderTest(object):
 	def __init__(self, val):
 		self.val = val
 
 def test_object():
-	ob = TestObject(1)
+	ob = ObjectUnderTest(1)
 	serialized = jaraco.modb.encode(ob)
 	ob_res = jaraco.modb.decode(serialized)
-	assert isinstance(ob_res, TestObject)
+	assert isinstance(ob_res, ObjectUnderTest)
 	assert ob_res is not ob
 	assert ob.val == ob_res.val
 
 def test_nested_object():
-	ob_nested = TestObject('child')
-	ob_parent = TestObject(ob_nested)
+	ob_nested = ObjectUnderTest('child')
+	ob_parent = ObjectUnderTest(ob_nested)
 	serialized = jaraco.modb.encode(ob_parent)
 	restored = jaraco.modb.decode(serialized)
-	assert isinstance(restored, TestObject)
-	assert isinstance(restored.val, TestObject)
+	assert isinstance(restored, ObjectUnderTest)
+	assert isinstance(restored.val, ObjectUnderTest)
 	assert restored.val.val == 'child'
 
 class MyDict(dict):
