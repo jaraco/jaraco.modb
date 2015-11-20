@@ -1,8 +1,6 @@
 jaraco.modb
 ===========
 
-`Documentation <https://pythonhosted.org/jaraco.modb>`_
-
 .. contents::
 
 Overview
