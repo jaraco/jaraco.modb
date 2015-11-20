@@ -4,7 +4,6 @@ import importlib
 import collections
 import decimal
 
-import pytest
 import six
 import jsonpickle
 
@@ -25,17 +24,16 @@ def test_Decimal():
 	roundtrip(decimal.Decimal(1.0))
 	roundtrip(decimal.Decimal(1000))
 
-class MyUnicode(six.text_type):
+class MyText(six.text_type):
 	def __reduce__(self):
-		return MyUnicode, (six.text_type(self),)
+		return MyText, (six.text_type(self),)
 
-@pytest.mark.skipif(six.PY3, reason="Python 2 only")
 class TestUnicodeSubclass(object):
-	"This technique demonstrates how to handle a Unicode subclass"
+	"This technique demonstrates how to handle a text-type subclass"
 	@classmethod
 	def setup_class(cls):
-		jsonpickle.handlers.registry.register(MyUnicode,
+		jsonpickle.handlers.registry.register(MyText,
 			jsonpickle.handlers.SimpleReduceHandler)
 
 	def test_UnicodeSubclass(self):
-		roundtrip(MyUnicode('foo'))
+		roundtrip(MyText('foo'))
