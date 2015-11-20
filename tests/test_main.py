@@ -3,8 +3,6 @@ from __future__ import absolute_import
 import datetime
 import collections
 
-import six
-import bson.binary
 import bson.tz_util
 
 import jaraco.modb
@@ -18,8 +16,6 @@ def test_to_bson():
 	res = jaraco.modb.encode(sample)
 	assert res['a'] == sample['a']
 	assert res['b'] == sample['b']
-	if six.PY2:
-		assert isinstance(res['c'], bson.binary.Binary)
 	assert jaraco.modb.decode(res) == sample
 
 class ObjectUnderTest(object):

@@ -5,9 +5,7 @@ import datetime as dt
 import six
 import jsonpickle.pickler
 import jsonpickle.unpickler
-import bson.binary
 import pymongo.son_manipulator
-from jaraco.text import is_binary
 
 # override the default pickler/unpickler to better handle some types
 
@@ -18,25 +16,12 @@ class Pickler(jsonpickle.pickler.Pickler):
 			return obj
 		if six.PY3 and isinstance(obj, bytes):
 			return obj
-		flattened = super(Pickler, self)._flatten(obj)
-		return self.handle_binary(flattened)
-
-	@staticmethod
-	def handle_binary(obj):
-		"""
-		On Python 2.7 and earlier, infer binary content of strings.
-		"""
-		if six.PY2 and is_binary(obj):
-			obj = bson.binary.Binary(obj)
-		return obj
+		return super(Pickler, self)._flatten(obj)
 
 
 class Unpickler(jsonpickle.unpickler.Unpickler):
-	def _restore(self, obj):
-		restored = super(Unpickler, self)._restore(obj)
-		if isinstance(restored, bson.binary.Binary):
-			return bytes(restored)
-		return restored
+	pass
+
 
 class SONManipulator(pymongo.son_manipulator.SONManipulator):
 	"""
