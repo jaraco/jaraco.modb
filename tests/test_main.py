@@ -18,6 +18,21 @@ def test_to_bson():
 	assert res['b'] == sample['b']
 	assert jaraco.modb.decode(res) == sample
 
+def test_from_bson():
+	"""
+	Older versions of jaraco.modb would store binary values as
+	Binary objects. It no longer does this, but for compatibility
+	with existing objects, ensure they are still handled suitably.
+	"""
+	encoded = dict(
+		bin=bson.binary.Binary(b'\x00\xff'),
+	)
+	decoded = jaraco.modb.decode(encoded)
+	assert decoded['bin'].startswith(b'\x00\xff')
+	# assert equality compatibility for bytes
+	assert decoded['bin'] == b'\x00\xff'
+
+
 class ObjectUnderTest(object):
 	def __init__(self, val):
 		self.val = val
