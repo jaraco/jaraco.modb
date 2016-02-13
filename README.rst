@@ -43,7 +43,7 @@ BSON-friendly representations::
     assert new_val.val == 3
 
 A more detailed tutorial is now `published as an iPython Notebook
-<http://nbviewer.ipython.org/urls/bitbucket.org/jaraco/jaraco.modb/raw/tip/tutorial.ipynb?create=1>`_.
+<http://nbviewer.ipython.org/urls/raw.githubusercontent.com/jaraco/jaraco.modb/master/tutorial.ipynb?create=1>`_.
 
 
 Automatic Usage
