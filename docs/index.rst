@@ -1,5 +1,5 @@
 Welcome to jaraco.modb documentation!
-========================================
+=====================================
 
 .. toctree::
    :maxdepth: 1
