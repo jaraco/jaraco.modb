@@ -13,10 +13,6 @@ objects to `MongoDB <http://www.mongodb.org/>`_.
 `MIT-style permissive license
 <http://www.opensource.org/licenses/mit-license.php>`_.
 
-You can install it with ``easy_install jaraco.modb`` or grab the source
-code from the `mercurial repository
-<http://bitbucket.org/jaraco/jaraco.modb>`_.
-
 Manual Usage
 ------------
 
