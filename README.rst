@@ -29,7 +29,7 @@ BSON-friendly representations::
 
     import jaraco.modb
     import pymongo
-    mongo_collection = pymongo.Connection().mydb.mycollection
+    mongo_collection = pymongo.MongoClient().mydb.mycollection
     val = MyObject(3)
     # save the object to the DB
     id = mongo_collection.save(jaraco.modb.encode(val))
