@@ -38,8 +38,8 @@ BSON-friendly representations::
     assert isinstance(new_val, MyObject)
     assert new_val.val == 3
 
-A more detailed tutorial is now `published as an iPython Notebook
-<http://nbviewer.ipython.org/urls/raw.githubusercontent.com/jaraco/jaraco.modb/master/tutorial.ipynb?create=1>`_.
+A more detailed tutorial is now `published as a Jupyter Notebook
+<https://nbviewer.jupyter.org/github/jaraco/jaraco.modb/blob/master/tutorial.ipynb>`_.
 
 
 Automatic Usage
