@@ -1,10 +1,33 @@
-jaraco.modb
-===========
+.. image:: https://img.shields.io/pypi/v/jaraco.modb.svg
+   :target: https://pypi.org/project/jaraco.modb
 
-.. contents::
+.. image:: https://img.shields.io/pypi/pyversions/jaraco.modb.svg
+
+.. image:: https://img.shields.io/pypi/dm/jaraco.modb.svg
+
+.. image:: https://img.shields.io/travis/jaraco/jaraco.modb/master.svg
+   :target: http://travis-ci.org/jaraco/jaraco.modb
+
+
+License
+=======
+
+License is indicated in the project metadata (typically one or more
+of the Trove classifiers). For more details, see `this explanation
+<https://github.com/jaraco/skeleton/issues/1>`_.
+
+Docs
+====
+
+There's `no good mechanism for publishing documentation
+<https://github.com/pypa/python-packaging-user-guide/pull/266>`_
+easily. If there's a documentation link above, it's probably
+stale because PyPI-based documentation is deprecated. This
+project may have documentation published at ReadTheDocs, but
+probably not. Good luck finding it.
 
 Overview
---------
+========
 
 ``jaraco.modb`` is a small, pure-Python library for persisting Python
 objects to `MongoDB <http://www.mongodb.org/>`_.
@@ -14,7 +37,7 @@ objects to `MongoDB <http://www.mongodb.org/>`_.
 <http://www.opensource.org/licenses/mit-license.php>`_.
 
 Manual Usage
-------------
+============
 
 ``jaraco.modb`` facilitates using `jsonpickle` to produce MongoDB-friendly
 representations of pickleable Python objects for easy storage in a MongoDB
@@ -43,7 +66,7 @@ A more detailed tutorial is now `published as a Jupyter Notebook
 
 
 Automatic Usage
----------------
+===============
 
 ``jaraco.modb`` also provides an SON Manipulator suitable for automatically
 encoding arbitrary objects for a pymongo.Database::
