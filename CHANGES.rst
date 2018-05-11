@@ -1,6 +1,12 @@
 Changes
 -------
 
+3.5.1
+~~~~~
+
+* Refreshed package.
+* Pinned jsonpickle due to jsonpickle #200.
+
 3.5
 ~~~
 
