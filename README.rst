@@ -3,38 +3,18 @@
 
 .. image:: https://img.shields.io/pypi/pyversions/jaraco.modb.svg
 
-.. image:: https://img.shields.io/pypi/dm/jaraco.modb.svg
-
 .. image:: https://img.shields.io/travis/jaraco/jaraco.modb/master.svg
-   :target: http://travis-ci.org/jaraco/jaraco.modb
+   :target: https://travis-ci.org/jaraco/jaraco.modb
 
+.. .. image:: https://img.shields.io/appveyor/ci/jaraco/jaraco-modb/master.svg
+..    :target: https://ci.appveyor.com/project/jaraco/jaraco-modb/branch/master
 
-License
-=======
+.. .. image:: https://readthedocs.org/projects/jaracomodb/badge/?version=latest
+..    :target: https://jaracomodb.readthedocs.io/en/latest/?badge=latest
 
-License is indicated in the project metadata (typically one or more
-of the Trove classifiers). For more details, see `this explanation
-<https://github.com/jaraco/skeleton/issues/1>`_.
-
-Docs
-====
-
-There's `no good mechanism for publishing documentation
-<https://github.com/pypa/python-packaging-user-guide/pull/266>`_
-easily. If there's a documentation link above, it's probably
-stale because PyPI-based documentation is deprecated. This
-project may have documentation published at ReadTheDocs, but
-probably not. Good luck finding it.
-
-Overview
-========
 
 ``jaraco.modb`` is a small, pure-Python library for persisting Python
-objects to `MongoDB <http://www.mongodb.org/>`_.
-
-``jaraco.modb`` is written by Jason R. Coombs.  It is licensed under an
-`MIT-style permissive license
-<http://www.opensource.org/licenses/mit-license.php>`_.
+objects to `MongoDB <https://www.mongodb.org/>`_.
 
 Manual Usage
 ============
