@@ -7,16 +7,18 @@ import bson.tz_util
 
 import jaraco.modb
 
+
 def test_to_bson():
 	sample = dict(
-		a = 'a string',
-		b = 'another string'.encode('ascii'),
-		c = 'some binary bytes'.encode('ascii') + b'\x00\xff',
+		a='a string',
+		b='another string'.encode('ascii'),
+		c='some binary bytes'.encode('ascii') + b'\x00\xff',
 	)
 	res = jaraco.modb.encode(sample)
 	assert res['a'] == sample['a']
 	assert res['b'] == sample['b']
 	assert jaraco.modb.decode(res) == sample
+
 
 def test_from_bson():
 	"""
@@ -37,6 +39,7 @@ class ObjectUnderTest(object):
 	def __init__(self, val):
 		self.val = val
 
+
 def test_object():
 	ob = ObjectUnderTest(1)
 	serialized = jaraco.modb.encode(ob)
@@ -44,6 +47,7 @@ def test_object():
 	assert isinstance(ob_res, ObjectUnderTest)
 	assert ob_res is not ob
 	assert ob.val == ob_res.val
+
 
 def test_nested_object():
 	ob_nested = ObjectUnderTest('child')
@@ -54,8 +58,10 @@ def test_nested_object():
 	assert isinstance(restored.val, ObjectUnderTest)
 	assert restored.val.val == 'child'
 
+
 class MyDict(dict):
 	pass
+
 
 def test_encode_dict_subclass():
 	d = MyDict(a=3, b=4)
@@ -63,6 +69,7 @@ def test_encode_dict_subclass():
 	assert 'MyDict' in str(encoded)
 	decoded = jaraco.modb.decode(encoded)
 	assert isinstance(decoded, MyDict)
+
 
 def test_ordered_dict():
 	items = ('a', 1), ('c', 3), ('b', 4)
@@ -73,12 +80,14 @@ def test_ordered_dict():
 	assert list(restored.keys()) == list('acb')
 	assert list(restored.values()) == [1, 3, 4]
 
+
 def test_datetime_naive():
 	now = datetime.datetime.utcnow()
 	serialized = jaraco.modb.encode(now)
 	assert isinstance(serialized, datetime.datetime)
 	restored = jaraco.modb.decode(serialized)
 	assert restored == now
+
 
 def test_datetime_utc():
 	now = datetime.datetime.utcnow().replace(tzinfo=bson.tz_util.utc)
@@ -87,8 +96,9 @@ def test_datetime_utc():
 	restored = jaraco.modb.decode(serialized)
 	assert restored == now
 
+
 def test_datetime_local():
-	est = bson.tz_util.FixedOffset(-60*5, 'EST')
+	est = bson.tz_util.FixedOffset(-60 * 5, 'EST')
 	now = datetime.datetime.now().replace(tzinfo=est)
 	serialized = jaraco.modb.encode(now)
 	assert not isinstance(serialized, datetime.datetime)
