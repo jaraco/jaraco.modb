@@ -33,9 +33,7 @@ params = dict(
 	),
 	python_requires='>=2.7',
 	install_requires=[
-		# pin upper bound on jsonpickle due to
-		# https://github.com/jsonpickle/jsonpickle/issues/200
-		'jsonpickle>=0.9.2,<0.9.5',
+		'jsonpickle>=0.9.5',
 		'pymongo',
 		'six',
 	],

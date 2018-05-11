@@ -1,3 +1,8 @@
+3.6
+===
+
+* Bump to jsonpickle 0.9.5+ for integrated reduce support.
+
 3.5.1
 =====
 

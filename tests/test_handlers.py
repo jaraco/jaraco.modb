@@ -36,11 +36,6 @@ class MyText(six.text_type):
 
 class TestUnicodeSubclass(object):
 	"This technique demonstrates how to handle a text-type subclass"
-	@classmethod
-	def setup_class(cls):
-		jsonpickle.handlers.registry.register(
-			MyText,
-			jsonpickle.handlers.SimpleReduceHandler)
 
 	def test_UnicodeSubclass(self):
 		roundtrip(MyText('foo'))
