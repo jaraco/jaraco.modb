@@ -28,7 +28,7 @@ setup_params = dict(
 		'jaraco.util',
 	],
 	setup_requires=[
-		'hgtools',
+		'hgtools<8',
 		'pytest-runner',
 	],
 )
