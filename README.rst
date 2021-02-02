@@ -1,13 +1,18 @@
 .. image:: https://img.shields.io/pypi/v/jaraco.modb.svg
-   :target: https://pypi.org/project/jaraco.modb
+   :target: `PyPI link`_
 
 .. image:: https://img.shields.io/pypi/pyversions/jaraco.modb.svg
+   :target: `PyPI link`_
 
-.. image:: https://img.shields.io/travis/jaraco/jaraco.modb/master.svg
-   :target: https://travis-ci.org/jaraco/jaraco.modb
+.. _PyPI link: https://pypi.org/project/jaraco.modb
 
-.. .. image:: https://img.shields.io/appveyor/ci/jaraco/jaraco-modb/master.svg
-..    :target: https://ci.appveyor.com/project/jaraco/jaraco-modb/branch/master
+.. image:: https://github.com/jaraco/jaraco.modb/workflows/Automated%20Tests/badge.svg
+   :target: https://github.com/jaraco/jaraco.modb/actions?query=workflow%3A%22Automated+Tests%22
+   :alt: Automated Tests
+
+.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
+   :target: https://github.com/psf/black
+   :alt: Code style: Black
 
 .. .. image:: https://readthedocs.org/projects/jaracomodb/badge/?version=latest
 ..    :target: https://jaracomodb.readthedocs.io/en/latest/?badge=latest
