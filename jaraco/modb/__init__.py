@@ -1,9 +1,6 @@
-from __future__ import absolute_import
-
 import warnings
 import datetime as dt
 
-import six
 import jsonpickle.pickler
 import jsonpickle.unpickler
 import bson.binary
@@ -17,7 +14,7 @@ class Pickler(jsonpickle.pickler.Pickler):
         if isinstance(obj, dt.datetime) and not obj.utcoffset():
             # naive datetimes or UTC datetimes can be stored directly
             return obj
-        if six.PY3 and isinstance(obj, bytes):
+        if isinstance(obj, bytes):
             return obj
         return super(Pickler, self)._flatten(obj)
 

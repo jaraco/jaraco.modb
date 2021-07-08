@@ -1,10 +1,7 @@
-from __future__ import print_function
-
 import importlib
 import collections
 import decimal
 
-import six
 import jsonpickle
 
 
@@ -29,9 +26,9 @@ def test_Decimal():
     roundtrip(decimal.Decimal(1000))
 
 
-class MyText(six.text_type):
+class MyText(str):
     def __reduce__(self):
-        return MyText, (six.text_type(self),)
+        return MyText, (str(self),)
 
 
 class TestUnicodeSubclass(object):
