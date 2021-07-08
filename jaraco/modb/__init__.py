@@ -1,9 +1,7 @@
-import warnings
 import datetime as dt
 
 import jsonpickle.pickler
 import jsonpickle.unpickler
-import bson.binary
 import pymongo.son_manipulator
 
 # override the default pickler/unpickler to better handle some types
@@ -20,13 +18,7 @@ class Pickler(jsonpickle.pickler.Pickler):
 
 
 class Unpickler(jsonpickle.unpickler.Unpickler):
-    def _restore(self, obj):
-        restored = super(Unpickler, self)._restore(obj)
-        if isinstance(restored, bson.binary.Binary):
-            msg = "Binary objects are deprecated"
-            warnings.warn(msg, DeprecationWarning)
-            return bytes(restored)
-        return restored
+    pass
 
 
 class SONManipulator(pymongo.son_manipulator.SONManipulator):

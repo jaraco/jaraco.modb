@@ -1,7 +1,9 @@
-v4.1.1
+v5.0.0
 ======
 
-Refreshed package metadata.
+Dropped support for unpickling bson.Binary objects.
+Use 4.x to restore objects that may contain those objects
+and then re-save them as bytes.
 
 v4.1.0
 ======
