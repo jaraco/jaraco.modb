@@ -14,8 +14,11 @@
    :target: https://github.com/psf/black
    :alt: Code style: Black
 
-.. .. image:: https://readthedocs.org/projects/jaracomodb/badge/?version=latest
-..    :target: https://jaracomodb.readthedocs.io/en/latest/?badge=latest
+.. .. image:: https://readthedocs.org/projects/skeleton/badge/?version=latest
+..    :target: https://skeleton.readthedocs.io/en/latest/?badge=latest
+
+.. image:: https://img.shields.io/badge/skeleton-2021-informational
+   :target: https://blog.jaraco.com/skeleton
 
 
 ``jaraco.modb`` is a small, pure-Python library for persisting Python
