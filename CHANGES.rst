@@ -1,3 +1,8 @@
+v6.0.0
+======
+
+Removed SONManipulator.
+
 v5.0.0
 ======
 
