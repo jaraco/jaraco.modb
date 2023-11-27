@@ -65,7 +65,7 @@ def test_ordered_dict():
 
 
 def test_datetime_naive():
-    now = datetime.datetime.utcnow()
+    now = datetime.datetime.now()
     serialized = jaraco.modb.encode(now)
     assert isinstance(serialized, datetime.datetime)
     restored = jaraco.modb.decode(serialized)
@@ -73,7 +73,7 @@ def test_datetime_naive():
 
 
 def test_datetime_utc():
-    now = datetime.datetime.utcnow().replace(tzinfo=bson.tz_util.utc)
+    now = datetime.datetime.now(bson.tz_util.utc)
     serialized = jaraco.modb.encode(now)
     assert isinstance(serialized, datetime.datetime)
     restored = jaraco.modb.decode(serialized)
@@ -82,7 +82,7 @@ def test_datetime_utc():
 
 def test_datetime_local():
     est = bson.tz_util.FixedOffset(-60 * 5, 'EST')
-    now = datetime.datetime.now().replace(tzinfo=est)
+    now = datetime.datetime.now(est)
     serialized = jaraco.modb.encode(now)
     assert not isinstance(serialized, datetime.datetime)
     restored = jaraco.modb.decode(serialized)
