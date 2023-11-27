@@ -40,6 +40,7 @@ nitpicky = True
 extensions += ['sphinx.ext.intersphinx']
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3', None),
+    'jsonpickle': ('https://jsonpickle.github.io/', None),
 }
 
 # Preserve authored syntax for defaults
