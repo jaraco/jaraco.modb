@@ -31,7 +31,7 @@ database.
 One may simply encode and decode Python objects to MongoDB
 BSON-friendly representations::
 
-    class MyObject(object):
+    class MyObject:
         def __init__(self, val):
             self.val = val
 
