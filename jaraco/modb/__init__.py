@@ -13,7 +13,7 @@ class Pickler(jsonpickle.pickler.Pickler):
             return obj
         if isinstance(obj, bytes):
             return obj
-        return super(Pickler, self)._flatten(obj)
+        return super()._flatten(obj)
 
 
 class Unpickler(jsonpickle.unpickler.Unpickler):

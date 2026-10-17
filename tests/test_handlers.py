@@ -1,6 +1,6 @@
-import importlib
 import collections
 import decimal
+import importlib
 
 import jsonpickle
 
@@ -22,7 +22,7 @@ def test_OrderedDict():
 
 
 def test_Decimal():
-    roundtrip(decimal.Decimal(1.0))
+    roundtrip(decimal.Decimal('1.0'))
     roundtrip(decimal.Decimal(1000))
 
 
@@ -31,7 +31,7 @@ class MyText(str):
         return MyText, (str(self),)
 
 
-class TestUnicodeSubclass(object):
+class TestUnicodeSubclass:
     "This technique demonstrates how to handle a text-type subclass"
 
     def test_UnicodeSubclass(self):

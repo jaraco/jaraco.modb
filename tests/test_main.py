@@ -1,5 +1,5 @@
-import datetime
 import collections
+import datetime
 
 import bson.tz_util
 
@@ -18,7 +18,7 @@ def test_to_bson():
     assert jaraco.modb.decode(res) == sample
 
 
-class ObjectUnderTest(object):
+class ObjectUnderTest:
     def __init__(self, val):
         self.val = val
 
